@@ -5,20 +5,10 @@
 }
 
 .header{
-    display: flex;
-                height: 100vh;
-                min-width: 100%;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                background-image: url("../../public/image/medi1.webp");
-                background-attachment: fixed; 
-                background-position: center;
-                background-size: cover;
-                color: var(--color);
-                row-gap: 4rem;
-                /* text-align: center; */
-
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
 }
 
 .header-list{
@@ -35,11 +25,20 @@
     flex-direction: row;
     gap: 3rem;
     align-items: center;
-    
 }
 
-.header3{
-    gap: 2rem;
+
+.header3 a {
+    gap: 3rem;
+    text-decoration: none;
+    color: black;
+}
+
+.headerlink{
+    text-decoration: none;
+    color: black;
+    padding-bottom: 10px;
+    
 }
 
 .bi {
@@ -59,7 +58,8 @@
     word-wrap: break-word;
     opacity: 60%;
     margin-left: 70px;
-    padding-bottom: 120px;
+    padding-bottom: 190px;
+    padding-top: 70px;
 }
 
 .header5{
@@ -76,7 +76,7 @@
     margin-top: 22px;
 }
 .header2 a {
-    text-decoration: none;
+    text-decoration: dashed;
     color: black;
     text-align: center;
 }
