@@ -7,14 +7,16 @@ import axios from "axios";
 
 function Shop() {
   const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
   useEffect(() => {
     axios
-      .get("http://localhost:3000/shop")
-      .then((res) => {
+     .get("http://localhost:3000/shop")
+     .then((res) => {
         setProducts(res.data);
         console.log(res.data);
       })
-      .catch((err) => console.log(err));
+     .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -32,6 +34,7 @@ function Shop() {
                   type="text"
                   placeholder="Search"
                   className="mr-sm-2 search-bar"
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </Col>
             </Row>
@@ -39,17 +42,29 @@ function Shop() {
           <hr />
         </div>
       </div>
-      {products.map((product) => {
-        return (
+      {searchQuery
+       ? products
+           .filter((product) =>
+              product.Name.toLowerCase().includes(searchQuery.toLowerCase())
+            )
+           .map((product) => (
+              <ShopItem
+                Name={product.Name}
+                Description={product.Description}
+                Photo={product.Photo}
+                mrp={product.MRP}
+              />
+            ))
+        : products.map((product) => (
             <ShopItem
-            Name={product.Name}
-            Description={product.Description}
-            Photo={product.Photo}
-            mrp={product.MRP}
+              Name={product.Name}
+              Description={product.Description}
+              Photo={product.Photo}
+              mrp={product.MRP}
             />
-        )
-      })}
+          ))}
     </div>
   );
 }
+
 export default Shop;
